@@ -1,0 +1,309 @@
+@import 'class';
+@import 'social';
+
+// variables
+:root {
+	--header-width: 30rem;
+	--header-height: 6rem;
+	--header-width-mini: 6rem;
+	--footer-height: calc( (var(--header-width) - 4rem) / 7 + 3rem );
+	--footer-height-mini: calc( var(--header-width-mini) * 6 - 1.5rem );
+	--social-button-size: 3rem;
+	--social-button-size-mini: 4rem;
+	--social-button-size-mobile: 5rem;
+	--button-icon-size: 65%;
+	--font-family: "Roboto Slab";
+	--background-image: url("https://images.unsplash.com/photo-1581873609131-a8b2a23ab0bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80");
+	--tobb-blue: hsl(218, 100%, 33%);
+	--tobb-red: hsl(357, 69%, 41%);
+	--tobb-yellow: hsl(30, 88%, 54%);
+	--text-blue: var(--tobb-blue);
+	--text-red: var(--tobb-red);
+	--calendar-color-light: hsl(218, 100%, 33%);
+	--calendar-color-dark: hsl(218, 100%, 20%);
+	--calendar-activity-light: hsl(30, 88%, 54%);
+	--calendar-activity-dark: hsl(30, 88%, 33%);
+	--calendar-border: white;
+	--calendar-select-light: hsl(357, 69%, 41%);
+	--calendar-select-dark: hsl(357, 69%, 25%);
+}
+
+html {
+	font-size: 12px;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+	background: var(--background-image) no-repeat center center fixed;
+	background-size: cover;
+
+	button {
+		border: none;
+	}
+
+	button:hover,
+	button:focus {
+		box-shadow: 0 0 1rem 0.2rem var(--social-button-shadow);
+		transition: 50ms;
+	}
+
+	.social-button-circle {
+		width: 3rem;
+		height: 3rem;
+		margin-right: 0.5rem;
+	}
+
+	header {
+		position: fixed;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: var(--header-width);
+		height: 100vh;
+
+		#tft-logo {
+			margin: 1rem;
+			width: 10rem;
+			height: 10rem;
+			border-radius: 50%;
+			background-size: 80%;
+		}
+
+		#header-tobb, #header-tft, #header-tarih {
+			text-align: center;
+			margin: 0;
+			padding: 0.2rem;
+		}
+
+		#header-tobb {
+			font: bold normal 2.5rem var(--font-family);
+			color: var(--text-blue);
+		}
+
+		#header-tft {
+			font: bold normal 1.5rem var(--font-family);
+			color: var(--text-red);
+		}
+
+		#header-tarih {
+			font: italic 1rem var(--font-family);
+			color: var(--text-blue);
+		}
+
+		#header-buttons {
+			height: calc(var(--footer-height) - 3rem);
+			width: calc(var(--header-width) - 1rem);
+			display: flex;
+			flex-direction: row;
+			margin-top: auto;
+			padding: 1.5rem 0.5rem;
+
+			:first-child {
+				margin-right: auto;
+			}
+		}
+
+		.social-kaydol {
+			width: calc(var(--social-button-size) * 2.5);
+			height: var(--social-button-size);
+			background-color: var(--tobb-yellow);
+			font: bold normal 1.5rem var(--font-family);
+			text-align: center;
+			color: white;
+			border-radius: 50vmax;
+
+			--social-button-shadow: var(--tobb-yellow);
+		}
+
+		.social-button-circle {
+			width: var(--social-button-size);
+			height: var(--social-button-size);
+			margin-right: 0.5rem;
+		}
+	}
+
+	main {
+		margin-left: var(--header-width);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 2rem;
+
+		article {
+			width: clamp(45ch, calc(100% - 8rem), 75ch);
+			padding: 2rem;
+			margin-top: 2rem;
+			position: relative;
+
+			.calendar {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+
+		*[activity-title], *[activity-section], *[activity-speaker], *[activity-description], *[activity-date], *[activity-writer] {
+			margin: 2rem 0;
+			color: var(--text-blue);
+		}
+
+		*[activity-title] {
+			text-align: center;
+			font: bold normal 2rem var(--font-family);
+			margin-bottom: 2.5rem;
+		}
+
+		*[activity-section] {
+			font: bold normal 1.5rem var(--font-family);
+		}
+
+		*[activity-speaker] {
+			font: bold normal 1.5rem var(--font-family);
+		}
+		
+		*[activity-speaker]::before {
+			content: "Konuşmacı: ";
+		}
+
+		*[activity-description] {
+			font: normal 1rem var(--font-family);
+			line-height: 1.75rem;
+		}
+
+		*[activity-date], *[activity-writer] {
+			font: italic 1.25rem var(--font-family);
+			text-align: right;
+		}
+
+		*[activity-link] {
+			* {
+				margin: 0 1rem 0 0;
+			}
+		}
+	}
+
+	footer {
+		display: none;
+	}
+}
+
+// tablet
+@media only screen and (max-width: 800px) {
+	body {
+		header {
+			width: var(--header-width-mini);
+	
+			#tft-logo {
+				margin: 0.5rem;
+				width: 5rem;
+				height: 5rem;
+			}
+	
+			#header-tobb, #header-tft {
+				font-size: 1rem;
+			}
+	
+			#header-tarih {
+				font-size: 0.75rem;
+				margin: 0.2rem 0.5rem;
+			}
+	
+			#header-buttons {
+				width: auto;
+				height: auto;
+				flex-direction: column;
+				padding: 1rem 0.5rem;
+			}
+	
+			.social-kaydol {
+				width: var(--social-button-size-mini);
+				height: var(--social-button-size-mini);
+				font-size: 0.75rem;
+				border-radius: 50vmax;
+				margin-bottom: 0.5rem;
+			}
+
+			.social-button-circle {
+				width: var(--social-button-size-mini);
+				height: var(--social-button-size-mini);
+				margin-bottom: 0.5rem;
+				margin-right: 0;
+			}
+		}
+
+		main {
+			margin-left: var(--header-width-mini);
+		}
+	}
+}
+
+// mobile
+@media only screen and (max-width: 600px), (orientation: landscape) and (max-width: 840px) {
+	html {
+		font-size: 8px;
+	}
+	
+	body {
+		header {
+			position: relative;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			width: 100vw;
+			height: var(--header-height);
+
+			#tft-logo {
+				margin-left: 1rem;
+				width: 4rem;
+				height: 4rem;
+			}
+
+			#header-tobb, #header-tft {
+				font-size: 1.5rem;
+				margin-right: 0.5rem;
+			}
+
+			#header-tft-newline, #header-tarih, #header-buttons {
+				display: none;
+			}
+		}
+
+		main {
+			margin-left: 0;
+		}
+
+		footer {
+			position: relative;
+			display: initial;
+			width: 100vw;
+			margin-top: auto;
+
+			#footer-buttons {
+				height: var(--footer-height-mobile);
+				display: flex;
+				padding: 0.5rem 0.5rem;
+
+				:first-child{
+					margin-right: auto;
+				}
+			}
+
+			.social-kaydol {
+				width: calc(var(--social-button-size-mobile) * 2);
+				height: var(--social-button-size-mobile);
+				background-color: var(--tobb-yellow);
+				font: bold normal 1.5rem var(--font-family);
+				text-align: center;
+				color: white;
+				border-radius: 50vmax;
+			}
+
+			.social-button-circle {
+				width: var(--social-button-size-mobile);
+				height: var(--social-button-size-mobile);
+			}
+		}
+	}
+}

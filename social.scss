@@ -1,0 +1,44 @@
+.social-discord {
+	background: url(res/discord.svg) no-repeat, #7289da;
+	--social-button-shadow: #7289da;
+}
+
+.social-whatsapp {
+	background: url(res/whatsapp.svg) no-repeat, #25D366;
+	--social-button-shadow: #25D366;
+}
+
+.social-instagram {
+	background:
+		url(res/instagram.svg) no-repeat center/var(--button-icon-size), 
+		radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), 
+		radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), 
+		radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), 
+		radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), 
+		radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), 
+		radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), 
+		radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), 
+		linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100% 100%)
+		!important;
+	--social-button-shadow: white;
+}
+
+.social-youtube {
+	background: url(res/youtube.svg) no-repeat, red;
+	--social-button-shadow: red;
+}
+
+.social-twitter {
+	background: url(res/twitter.svg) no-repeat, #1DA1F2;
+	--social-button-shadow: #1DA1F2;
+}
+
+.social-zoom {
+	background: url(res/zoom.svg) no-repeat, #2D8CFF;
+	--social-button-shadow: #2D8CFF;
+}
+
+.social-pdf {
+	background: url(res/pdf.svg) no-repeat, #F40F02;
+	--social-button-shadow: #F40F02;
+}

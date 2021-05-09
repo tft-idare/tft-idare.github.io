@@ -1,0 +1,400 @@
+@charset "UTF-8";
+.blur::before {
+  filter: blur(10px);
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: var(--background-image) center/cover;
+  background-attachment: fixed;
+}
+
+.blur::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.75;
+  background: white;
+}
+
+.social-button-circle {
+  background-size: var(--button-icon-size) !important;
+  background-position: center, center !important;
+  border-radius: 50vmax;
+}
+
+.calendar {
+  --scale: 1;
+  --calendar-gap: 1px;
+  --calendar-side: 2rem;
+  --week-width: calc(2.25rem * var(--scale));
+  --day-height: calc(2rem * var(--scale));
+  --cell-width: calc(3.25rem * var(--scale));
+  --cell-height: calc(2.5rem * var(--scale));
+  width: calc(25rem * var(--scale) + 7px);
+  display: grid;
+  grid-template-columns: var(--week-width) repeat(7, 1fr);
+  gap: var(--calendar-gap);
+  margin-top: 2rem;
+  align-items: center;
+}
+.calendar * {
+  width: var(--cell-width);
+  height: var(--cell-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background-color: var(--calendar-color-light);
+  font: normal 1rem var(--font-family);
+  color: var(--calendar-border);
+  text-decoration: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.calendar *[month], .calendar *[week], .calendar *[day] {
+  background-color: var(--calendar-color-dark);
+  color: var(--calendar-border);
+}
+.calendar *[month] {
+  width: 100%;
+  height: 3rem;
+  grid-column: span 8;
+  font: bold normal 1.5rem var(--font-family);
+}
+.calendar *[week] {
+  width: var(--week-width);
+  font: bold normal 1rem var(--font-family);
+  justify-content: right;
+}
+.calendar *[week]::after {
+  content: " ";
+}
+.calendar *[day] {
+  height: var(--day-height);
+  font: bold normal 1rem var(--font-family);
+}
+.calendar *[other-month] {
+  background-color: var(--calendar-color-dark);
+}
+.calendar *[activity] {
+  background-color: var(--calendar-activity-light);
+}
+.calendar *[other-month][activity] {
+  background-color: var(--calendar-activity-dark);
+}
+.calendar *[activity]:hover, .calendar *[activity]:focus {
+  background-color: var(--calendar-select-light);
+  transition: 20ms;
+}
+.calendar *[other-month][activity]:hover, .calendar *[other-month][activity]:focus {
+  background-color: var(--calendar-select-dark);
+  transition: 20ms;
+}
+
+@media only screen and (max-width: 800px), (max-width: 600px), (orientation: landscape) and (max-width: 840px) {
+  .calendar[header-calendar] {
+    display: none;
+  }
+}
+
+.social-discord {
+  background: url(res/discord.svg) no-repeat, #7289da;
+  --social-button-shadow: #7289da;
+}
+
+.social-whatsapp {
+  background: url(res/whatsapp.svg) no-repeat, #25D366;
+  --social-button-shadow: #25D366;
+}
+
+.social-instagram {
+  background: url(res/instagram.svg) no-repeat center/var(--button-icon-size), radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100% 100%) !important;
+  --social-button-shadow: white;
+}
+
+.social-youtube {
+  background: url(res/youtube.svg) no-repeat, red;
+  --social-button-shadow: red;
+}
+
+.social-twitter {
+  background: url(res/twitter.svg) no-repeat, #1DA1F2;
+  --social-button-shadow: #1DA1F2;
+}
+
+.social-zoom {
+  background: url(res/zoom.svg) no-repeat, #2D8CFF;
+  --social-button-shadow: #2D8CFF;
+}
+
+.social-pdf {
+  background: url(res/pdf.svg) no-repeat, #F40F02;
+  --social-button-shadow: #F40F02;
+}
+
+:root {
+  --header-width: 30rem;
+  --header-height: 6rem;
+  --header-width-mini: 6rem;
+  --footer-height: calc( (var(--header-width) - 4rem) / 7 + 3rem );
+  --footer-height-mini: calc( var(--header-width-mini) * 6 - 1.5rem );
+  --social-button-size: 3rem;
+  --social-button-size-mini: 4rem;
+  --social-button-size-mobile: 5rem;
+  --button-icon-size: 65%;
+  --font-family: "Roboto Slab";
+  --background-image: url("https://images.unsplash.com/photo-1581873609131-a8b2a23ab0bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80");
+  --tobb-blue: hsl(218, 100%, 33%);
+  --tobb-red: hsl(357, 69%, 41%);
+  --tobb-yellow: hsl(30, 88%, 54%);
+  --text-blue: var(--tobb-blue);
+  --text-red: var(--tobb-red);
+  --calendar-color-light: hsl(218, 100%, 33%);
+  --calendar-color-dark: hsl(218, 100%, 20%);
+  --calendar-activity-light: hsl(30, 88%, 54%);
+  --calendar-activity-dark: hsl(30, 88%, 33%);
+  --calendar-border: white;
+  --calendar-select-light: hsl(357, 69%, 41%);
+  --calendar-select-dark: hsl(357, 69%, 25%);
+}
+
+html {
+  font-size: 12px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background-image) no-repeat center center fixed;
+  background-size: cover;
+}
+body button {
+  border: none;
+}
+body button:hover,
+body button:focus {
+  box-shadow: 0 0 1rem 0.2rem var(--social-button-shadow);
+  transition: 50ms;
+}
+body .social-button-circle {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 0.5rem;
+}
+body header {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--header-width);
+  height: 100vh;
+}
+body header #tft-logo {
+  margin: 1rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-size: 80%;
+}
+body header #header-tobb, body header #header-tft, body header #header-tarih {
+  text-align: center;
+  margin: 0;
+  padding: 0.2rem;
+}
+body header #header-tobb {
+  font: bold normal 2.5rem var(--font-family);
+  color: var(--text-blue);
+}
+body header #header-tft {
+  font: bold normal 1.5rem var(--font-family);
+  color: var(--text-red);
+}
+body header #header-tarih {
+  font: italic 1rem var(--font-family);
+  color: var(--text-blue);
+}
+body header #header-buttons {
+  height: calc(var(--footer-height) - 3rem);
+  width: calc(var(--header-width) - 1rem);
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  padding: 1.5rem 0.5rem;
+}
+body header #header-buttons :first-child {
+  margin-right: auto;
+}
+body header .social-kaydol {
+  width: calc(var(--social-button-size) * 2.5);
+  height: var(--social-button-size);
+  background-color: var(--tobb-yellow);
+  font: bold normal 1.5rem var(--font-family);
+  text-align: center;
+  color: white;
+  border-radius: 50vmax;
+  --social-button-shadow: var(--tobb-yellow);
+}
+body header .social-button-circle {
+  width: var(--social-button-size);
+  height: var(--social-button-size);
+  margin-right: 0.5rem;
+}
+body main {
+  margin-left: var(--header-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+body main article {
+  width: clamp(45ch, calc(100% - 8rem), 75ch);
+  padding: 2rem;
+  margin-top: 2rem;
+  position: relative;
+}
+body main article .calendar {
+  margin-left: auto;
+  margin-right: auto;
+}
+body main *[activity-title], body main *[activity-section], body main *[activity-speaker], body main *[activity-description], body main *[activity-date], body main *[activity-writer] {
+  margin: 2rem 0;
+  color: var(--text-blue);
+}
+body main *[activity-title] {
+  text-align: center;
+  font: bold normal 2rem var(--font-family);
+  margin-bottom: 2.5rem;
+}
+body main *[activity-section] {
+  font: bold normal 1.5rem var(--font-family);
+}
+body main *[activity-speaker] {
+  font: bold normal 1.5rem var(--font-family);
+}
+body main *[activity-speaker]::before {
+  content: "Konuşmacı: ";
+}
+body main *[activity-description] {
+  font: normal 1rem var(--font-family);
+  line-height: 1.75rem;
+}
+body main *[activity-date], body main *[activity-writer] {
+  font: italic 1.25rem var(--font-family);
+  text-align: right;
+}
+body main *[activity-link] * {
+  margin: 0 1rem 0 0;
+}
+body footer {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  body header {
+    width: var(--header-width-mini);
+  }
+  body header #tft-logo {
+    margin: 0.5rem;
+    width: 5rem;
+    height: 5rem;
+  }
+  body header #header-tobb, body header #header-tft {
+    font-size: 1rem;
+  }
+  body header #header-tarih {
+    font-size: 0.75rem;
+    margin: 0.2rem 0.5rem;
+  }
+  body header #header-buttons {
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+  }
+  body header .social-kaydol {
+    width: var(--social-button-size-mini);
+    height: var(--social-button-size-mini);
+    font-size: 0.75rem;
+    border-radius: 50vmax;
+    margin-bottom: 0.5rem;
+  }
+  body header .social-button-circle {
+    width: var(--social-button-size-mini);
+    height: var(--social-button-size-mini);
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+  }
+  body main {
+    margin-left: var(--header-width-mini);
+  }
+}
+@media only screen and (max-width: 600px), (orientation: landscape) and (max-width: 840px) {
+  html {
+    font-size: 8px;
+  }
+
+  body header {
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: var(--header-height);
+  }
+  body header #tft-logo {
+    margin-left: 1rem;
+    width: 4rem;
+    height: 4rem;
+  }
+  body header #header-tobb, body header #header-tft {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+  body header #header-tft-newline, body header #header-tarih, body header #header-buttons {
+    display: none;
+  }
+  body main {
+    margin-left: 0;
+  }
+  body footer {
+    position: relative;
+    display: initial;
+    width: 100vw;
+    margin-top: auto;
+  }
+  body footer #footer-buttons {
+    height: var(--footer-height-mobile);
+    display: flex;
+    padding: 0.5rem 0.5rem;
+  }
+  body footer #footer-buttons :first-child {
+    margin-right: auto;
+  }
+  body footer .social-kaydol {
+    width: calc(var(--social-button-size-mobile) * 2);
+    height: var(--social-button-size-mobile);
+    background-color: var(--tobb-yellow);
+    font: bold normal 1.5rem var(--font-family);
+    text-align: center;
+    color: white;
+    border-radius: 50vmax;
+  }
+  body footer .social-button-circle {
+    width: var(--social-button-size-mobile);
+    height: var(--social-button-size-mobile);
+  }
+}/*# sourceMappingURL=new.css.map */
